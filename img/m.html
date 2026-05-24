@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mohammed Towfig | Portfolio Pro</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #38bdf8;
+            --bg-dark: #050b18;
+            --card-bg: rgba(30, 41, 59, 0.7);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --neon-glow: 0 0 15px rgba(56, 189, 248, 0.5);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: 'Cairo', sans-serif;
+            overflow-x: hidden;
+            line-height: 1.6;
+            position: relative;
+        }
+
+        /* --- 🌟 تأثير خلفية النجوم المتحركة 🌟 --- */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0;
+            width: 200%; height: 200%;
+            background-image: 
+                radial-gradient(2px 2px at 20px 30px, #eee, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 40px 70px, #fff, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 50px 160px, #ddd, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 90px 40px, #fff, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 130px 80px, #fff, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 160px 120px, #ddd, rgba(0,0,0,0));
+            background-repeat: repeat;
+            background-size: 200px 200px;
+            animation: starsAnimation 100s linear infinite;
+            opacity: 0.3;
+            z-index: -1;
+        }
+
+        @keyframes starsAnimation {
+            from { transform: translateY(0); }
+            to { transform: translateY(-1000px); }
+        }
+
+        /* --- Header & Navigation --- */
+        header {
+            position: fixed; top: 0; width: 100%; padding: 20px 8%;
+            display: flex; justify-content: space-between; align-items: center;
+            background: rgba(5, 11, 24, 0.8); backdrop-filter: blur(12px); z-index: 1000;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .logo { font-family: 'Fira Code', monospace; font-weight: bold; color: var(--primary); font-size: 1.3rem; text-shadow: var(--neon-glow); }
+
+        nav { display: flex; gap: 30px; }
+        nav a { color: var(--text-main); text-decoration: none; font-size: 0.95rem; transition: 0.3s; font-weight: 500; }
+        nav a:hover { color: var(--primary); text-shadow: var(--neon-glow); }
+
+        .menu-icon { display: none; flex-direction: column; cursor: pointer; gap: 6px; z-index: 1001; }
+        .bar { width: 28px; height: 3px; background-color: var(--primary); transition: 0.4s; border-radius: 2px; }
+
+        /* --- Hero Section --- */
+        .hero {
+            height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center;
+            text-align: center; position: relative;
+        }
+
+        .hero h1 { font-size: 4rem; margin-bottom: 15px; letter-spacing: -1px; text-shadow: 0 0 20px rgba(0,0,0,0.5); }
+        .hero p { color: var(--primary); font-family: 'Fira Code', monospace; font-size: 1.3rem; margin-bottom: 30px; }
+
+        /* --- Sections General --- */
+        section { padding: 100px 10%; position: relative; }
+        .section-title { text-align: center; margin-bottom: 60px; font-size: 2.5rem; }
+        .section-title span { color: var(--primary); }
+
+        /* --- About Section & 👁️ العين التي ترمش 👁️ --- */
+        .about-content { display: flex; flex-direction: column; align-items: center; text-align: center; max-width: 800px; margin: 0 auto; }
+        
+        .eye-container {
+            width: 120px; height: 70px; background: white; 
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            position: relative; overflow: hidden; display: flex; 
+            justify-content: center; align-items: center; margin-bottom: 30px;
+            box-shadow: 0 0 25px rgba(56, 189, 248, 0.4);
+            animation: blink 5s infinite; /* الرمش كل 5 ثواني */
+        }
+
+        @keyframes blink {
+            0%, 90%, 100% { height: 70px; }
+            95% { height: 2px; }
+        }
+
+        .iris { 
+            width: 38px; height: 38px; 
+            background: radial-gradient(circle, #38bdf8, #050b18); 
+            border-radius: 50%; transition: 0.1s ease-out; 
+        }
+
+        /* --- Skills & Projects --- */
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 20px; }
+        .skill-card {
+            background: var(--card-bg); padding: 25px; border-radius: 15px; text-align: center;
+            border: 1px solid rgba(255,255,255,0.05); transition: 0.4s; font-weight: bold;
+            backdrop-filter: blur(5px);
+        }
+        .skill-card:hover { border-color: var(--primary); transform: translateY(-10px); box-shadow: var(--neon-glow); }
+
+        .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 35px; }
+        .project-card {
+            background: var(--card-bg); border-radius: 20px; overflow: hidden; transition: 0.5s;
+            border: 1px solid rgba(255,255,255,0.03); backdrop-filter: blur(5px);
+        }
+        .project-card:hover { transform: translateY(-10px); border-color: var(--primary); box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
+        .project-info { padding: 30px; }
+        .project-info h3 { margin-bottom: 12px; font-size: 1.5rem; color: var(--primary); }
+        
+        .main-btn {
+            background: var(--primary); color: var(--bg-dark); padding: 18px 45px;
+            border-radius: 50px; text-decoration: none; font-weight: bold; transition: 0.3s;
+            display: inline-block; font-size: 1.1rem; box-shadow: var(--neon-glow);
+        }
+
+        /* --- Mobile Responsive --- */
+        @media (max-width: 768px) {
+            .menu-icon { display: flex; }
+            nav {
+                position: fixed; top: 0; right: -100%; width: 75%; height: 100vh;
+                background: #0f172a; flex-direction: column; justify-content: center;
+                align-items: center; transition: 0.5s;
+            }
+            nav.active { right: 0; }
+            .hero h1 { font-size: 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">< MOHAMMED TOWFIG /></div>
+        <div class="menu-icon" id="menuIcon">
+            <div class="bar"></div><div class="bar"></div><div class="bar"></div>
+        </div>
+        <nav id="navMenu">
+            <a href="#home">الرئيسية</a>
+            <a href="#about">عني</a>
+            <a href="#skills">المهارات</a>
+            <a href="#projects">الأعمال</a>
+            <a href="#contact">تواصل</a>
+        </nav>
+    </header>
+
+    <section class="hero" id="home">
+        <h1 id="typing-name">MOHAMMED TOWFIG</h1>
+        <p>> Front-End Developer & IT Specialist</p>
+        <a href="#projects" class="main-btn">استعرض أعمالي</a>
+    </section>
+
+    <section id="about">
+        <h2 class="section-title">من <span>أنا؟</span></h2>
+        <div class="about-content">
+            <div class="eye-container" id="eye">
+                <div class="iris" id="iris"></div>
+            </div>
+            <p style="font-size: 1.2rem; color: var(--text-muted);">
+                أنا محمد توفيق، مبرمج واجهات أمامية من كسلا. 
+                أقوم ببناء مواقع وتطبيقات ويب سريعة، آمنة، وذات طابع بصري فريد.
+            </p>
+        </div>
+    </section>
+
+    <section id="skills">
+        <h2 class="section-title">قدراتي <span>التقنية</span></h2>
+        <div class="skills-grid">
+            <div class="skill-card">HTML5 / CSS3</div>
+            <div class="skill-card">JavaScript ES6</div>
+            <div class="skill-card">React.js</div>
+            <div class="skill-card">Git & GitHub</div>
+            <div class="skill-card">Cyber Security</div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2 class="section-title">أبرز <span>المشاريع</span></h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-info">
+                    <h3>نظام الجودة للمناسبات</h3>
+                    <p>نظام متكامل لإدارة الفواتير والمخزون تم تطويره بـ JS.</p>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-info">
+                    <h3>البروفايل الشخصي</h3>
+                    <p>هذا الموقع التفاعلي الذي تتصفحه الآن.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" style="text-align: center;">
+        <h2 class="section-title">لنعمل <span>سوياً</span></h2>
+        <a href="mailto:towfig@example.com" class="main-btn">تواصل عبر البريد</a>
+    </section>
+
+    <script>
+        // 1. القائمة المنسدلة
+        const menuIcon = document.getElementById('menuIcon');
+        const navMenu = document.getElementById('navMenu');
+        menuIcon.addEventListener('click', () => {
+            menuIcon.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // 2. تتبع العين
+        const iris = document.getElementById('iris');
+        const eye = document.getElementById('eye');
+        document.addEventListener('mousemove', (e) => {
+            const rect = eye.getBoundingClientRect();
+            const x = (e.clientX - rect.left) / rect.width * 40 - 20;
+            const y = (e.clientY - rect.top) / rect.height * 40 - 20;
+            iris.style.transform = `translate(${x}px, ${y}px)`;
+        });
+
+        // 3. الآلة الكاتبة
+        const text = "MOHAMMED TOWFIG";
+        const el = document.getElementById('typing-name');
+        let i = 0;
+        function type() {
+            if (i < text.length) { el.innerHTML += text.charAt(i); i++; setTimeout(type, 150); }
+        }
+        window.onload = type;
+    </script>
+</body>
+</html>
